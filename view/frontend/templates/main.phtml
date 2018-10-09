@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var \Himanshu\Blog\Block\Index $block
+ */
+?>
+<h2> <?php echo __("Post Lists") ?> </h2>
+
+<?php /** * @var \Himanshu\Blog\Block\Blog $block */ $posts = $block->getPosts(); ?>
+<section class="blog-posts">
+    <?php if ($posts->getSize()): ?>
+        <div class="post-header">
+            <?php echo $block->getPagerHtml(); ?>
+        </div>
+
+        <div class="post-lists">
+            <?php foreach ($posts as $post) : ?>
+                <article itemscope itemtype="https://schema.org/CreativeWork">
+                    <a itemprop="headline" href="<?= $block->escapeUrl($block->getPostURL($post->getId())) ?>" title="<?= $block->escapeHtmlAttr($post->getTitle()) ?>"><?= $block->escapeHtml($post->getTitle()) ?></a>
+                    <img itemprop="thumbnailUrl" src="<?= $block->escapeUrl($block->showThumbImage($post->getFeaturedImage())) ?>" title="<?= __("Feature Image Of ") . $block->escapeHtmlAttr($post->getTitle()) ?>"/>
+                    <p>
+                        <<?= __("By") ?> <strong itemprop="author" itemscope itemtype="http://schema.org/Person"><?= __("Himanshu") ?></strong>
+                        <?= __("on") ?> <time itemprop="datePublished" datetime="<?= $block->escapeHtmlAttr($post->getCreatedAt()) ?>"><?= $block->showFormatedDate($post->getCreatedAt()) ?> </time>
+                    </p>
+                    <p itemprop="text"> <?= $block->escapeHtml($post->getShortDescription()) ?> </p>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <?php echo __('There are no posts are created at this time.'); ?>
+    <?php endif; ?>
+</section>

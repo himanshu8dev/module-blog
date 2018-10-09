@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Himanshu Kubavat
+ * Magento2 Sample Blog Extension
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Himanshu\Blog\Api\PostRepositoryInterface" type="Himanshu\Blog\Model\PostRepository"/>
+    <preference for="Himanshu\Blog\Api\Data\PostInterface" type="Himanshu\Blog\Model\Post"/>
+    
+    <!-- Collection -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blog_post_listing_data_source" xsi:type="string">Himanshu\Blog\Model\ResourceModel\Post\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    
+    <!-- ResourceModel -->
+    <type name="Himanshu\Blog\Model\ResourceModel\Post\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hims_blog_post</argument>
+            <argument name="eventPrefix" xsi:type="string">himanshu_blog_post_collection</argument>
+            <argument name="eventObject" xsi:type="string">post_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Himanshu\Blog\Model\ResourceModel\Post</argument>
+        </arguments>
+    </type>
+    
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Himanshu Kubavat
+ * Magento2 Sample Blog Extension
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::content">
+                        <resource id="Himanshu_Blog::posts" title="Blog" translate="title" sortOrder="10">
+                            <resource id="Himanshu_Blog::post_list" title="Posts" translate="title" sortOrder="10" />
+                            <resource id="Himanshu_Blog::post_new" title="Post New" translate="title" sortOrder="10" />
+                            <resource id="Himanshu_Blog::post_update" title="Post Update" translate="title" sortOrder="10" />
+                            <resource id="Himanshu_Blog::post_delete" title="Post Delete" translate="title" sortOrder="10" />
+                        </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

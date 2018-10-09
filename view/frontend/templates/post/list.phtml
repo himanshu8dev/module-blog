@@ -1,0 +1,35 @@
+<?php
+/**
+ * @var \Himanshu\Blog\Block\Blog $block
+ * 
+ * Blog Post List
+ */
+$posts = $block->getPosts();
+?>
+<section class="blog-posts">
+    <?php if ($posts->getSize()): ?>
+        <div class="post-header">
+            <?php echo __("Total Posts : %1", $posts->getSize()) ?>
+        </div>
+
+        <div class="post-lists">
+            <?php foreach ($posts as $post) { ?>
+                <article itemscope itemtype="https://schema.org/CreativeWork">
+                    <h3 itemprop="headline"><?= $block->escapeHtml($post->getTitle()) ?></h3>
+                    <img itemprop="thumbnailUrl" src="<?= $block->escapeUrl($block->showThumbImage($post->getFeaturedImage())) ?>" height="250" width="280" title="<?= __("Feature Image Of ") . $block->escapeHtmlAttr($post->getTitle()) ?>"/>
+                    <p>
+                        <strong itemprop="author" itemscope itemtype="http://schema.org/Person"><?= __("By") ?> <?= __("Himanshu") ?></strong>
+                        <time itemprop="datePublished" datetime="$block->escapeHtmlAttr($post->getCreatedAt())"><?= __("on") ?> <?= $block->showDate($post->CreatedAt()) ?> </time>
+                    </p>
+                    <p itemprop="text"> <?= $block->escapeHtml($post->getShortDescription()) ?> </p>
+                </article>
+            <?php } ?>
+        </div>
+    
+        <div class="post-footer">
+            <?php echo $block->getPagerHtml(); ?>
+        </div>
+    <?php else: ?>
+        <?php echo __('There are no posts are created at this time.'); ?>
+    <?php endif; ?>
+</section>

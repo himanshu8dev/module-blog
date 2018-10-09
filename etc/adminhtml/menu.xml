@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Himanshu Kubavat
+ * Magento2 Sample Blog Extension
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Himanshu_Blog::posts" title="Blog" translate="title" module="Himanshu_Blog" parent="Magento_Backend::content" sortOrder="50" dependsOnModule="Himanshu_Blog" resource="Himanshu_Blog::post"/>
+        <add id="Himanshu_Blog::post_list" title="Posts" translate="title" module="Himanshu_Blog" parent="Himanshu_Blog::posts" sortOrder="10" dependsOnModule="Himanshu_Blog" action="blog/post" resource="Himanshu_Blog::post_list"/>
+    </menu>
+</config>
+  

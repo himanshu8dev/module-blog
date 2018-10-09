@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Himanshu Kubavat
+ * Magento2 Sample Blog Extension
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    
+    <!-- create argument to pass -->
+    <type name="Himanshu\Blog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">Himanshu\Blog\Model\ImageUploader::IMAGE_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">Himanshu\Blog\Model\ImageUploader::IMAGE_PATH</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </type>
+    
+</config>
